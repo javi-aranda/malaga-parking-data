@@ -10,6 +10,20 @@ jobs:
   scheduled:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up datetime variables
+        id: date
+        run: |
+          echo "::set-output name=year::$(date +'%Y')"
+          echo "::set-output name=month::$(date +'%m')"
+          echo "::set-output name=day::$(date +'%d')"
+          echo "::set-output name=time::$(date +'%H:%M)"
+          echo "::set-output name=dir::${{ steps.date.outputs.date }}/${{ steps.date.outputs.month }}/${{ steps.date.outputs.day }}"
+      - name: Create directory structure
+        run: |
+          mkdir -p ${{ steps.date.outputs.dir }}
+      - name: Write .gitkeep file
+        run: |
+          touch ${{ steps.date.outputs.dir }}/.gitkeep
       - name: Setup deno
         uses: denoland/setup-deno@main
         with:
@@ -20,4 +34,5 @@ jobs:
         uses: githubocto/flat@v3
         with:
           http_url: https://datosabiertos.malaga.eu/recursos/aparcamientos/ocupappublicosmun/ocupappublicosmun.csv
-          downloaded_filename: data/parking-data.csv
+          downloaded_filename: |
+            ${{ steps.date.outputs.dir }}/parking-data-${{ steps.date.outputs.time }}.csv
