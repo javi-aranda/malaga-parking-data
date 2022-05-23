@@ -10,6 +10,8 @@ jobs:
   scheduled:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
       - name: Set up datetime variables
         id: date
         run: |
@@ -27,12 +29,13 @@ jobs:
       - name: Write .gitkeep file
         run: |
           touch ${{ github.workspace }}${{ steps.dir.outputs.dir }}/.gitkeep
-      - name: Setup deno
-        uses: denoland/setup-deno@main
+      - name: Commit structure to git repo
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          deno-version: v1.10.x
-      - name: Check out repo
-        uses: actions/checkout@v2
+          commit_message: Estructura generada automáticamente
+          commit_options: '--no-verify --signoff'
+          repository: .
+          commit_user_name: javisenberg
       - name: Fetch data
         uses: githubocto/flat@v3
         with:
@@ -42,3 +45,10 @@ jobs:
       - name: Move data to directory
         run: |
           mv parking-data-${{ steps.date.outputs.time }}.csv ${{ github.workspace }}${{ steps.dir.outputs.dir }}
+      - name: Update file location
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Estructura generada automáticamente
+          commit_options: '--no-verify --signoff'
+          repository: .
+          commit_user_name: javisenberg
