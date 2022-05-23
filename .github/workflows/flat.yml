@@ -42,6 +42,7 @@ jobs:
           http_url: https://datosabiertos.malaga.eu/recursos/aparcamientos/ocupappublicosmun/ocupappublicosmun.csv
           downloaded_filename: |
             parking-data-${{ steps.date.outputs.time }}.csv
+        continue-on-error: true
       - name: Move data to directory
         run: |
           mv parking-data-${{ steps.date.outputs.time }}.csv ${{ github.workspace }}/${{ steps.dir.outputs.dir }}
