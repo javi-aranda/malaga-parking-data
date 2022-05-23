@@ -23,10 +23,10 @@ jobs:
           echo "::set-output name=dir::${{ steps.date.outputs.date }}/${{ steps.date.outputs.month }}/${{ steps.date.outputs.day }}"
       - name: Create directory structure
         run: |
-          mkdir -p ${{ steps.dir.outputs.dir }}
+          mkdir -p ./${{ steps.dir.outputs.dir }}
       - name: Write .gitkeep file
         run: |
-          touch ${{ steps.dir.outputs.dir }}/.gitkeep
+          touch ./${{ steps.dir.outputs.dir }}/.gitkeep
       - name: Setup deno
         uses: denoland/setup-deno@main
         with:
@@ -38,4 +38,7 @@ jobs:
         with:
           http_url: https://datosabiertos.malaga.eu/recursos/aparcamientos/ocupappublicosmun/ocupappublicosmun.csv
           downloaded_filename: |
-            ${{ steps.dir.outputs.dir }}/parking-data-${{ steps.date.outputs.time }}.csv
+            parking-data-${{ steps.date.outputs.time }}.csv
+      - name: Move data to directory
+        run: |
+          mv parking-data-${{ steps.date.outputs.time }}.csv ./${{ steps.dir.outputs.dir }}/parking-data-${{ steps.date.outputs.time }}.csv
