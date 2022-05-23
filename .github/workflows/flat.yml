@@ -25,10 +25,10 @@ jobs:
           echo "::set-output name=dir::${{ steps.date.outputs.year }}/${{ steps.date.outputs.month }}/${{ steps.date.outputs.day }}"
       - name: Create directory structure
         run: |
-          mkdir -p ${{ github.workspace }}${{ steps.dir.outputs.dir }}
+          mkdir -p ${{ github.workspace }}/${{ steps.dir.outputs.dir }}
       - name: Write .gitkeep file
         run: |
-          touch ${{ github.workspace }}${{ steps.dir.outputs.dir }}/.gitkeep
+          touch ${{ github.workspace }}/${{ steps.dir.outputs.dir }}/.gitkeep
       - name: Commit structure to git repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -44,7 +44,7 @@ jobs:
             parking-data-${{ steps.date.outputs.time }}.csv
       - name: Move data to directory
         run: |
-          mv parking-data-${{ steps.date.outputs.time }}.csv ${{ github.workspace }}${{ steps.dir.outputs.dir }}
+          mv parking-data-${{ steps.date.outputs.time }}.csv ${{ github.workspace }}/${{ steps.dir.outputs.dir }}
       - name: Update file location
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
