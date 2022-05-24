@@ -43,11 +43,11 @@ jobs:
         with:
           http_url: https://datosabiertos.malaga.eu/recursos/aparcamientos/ocupappublicosmun/ocupappublicosmun.csv
           downloaded_filename: |
-            parking-data-${{ steps.date.outputs.time }}.csv
+            latest.csv
         continue-on-error: true
       - name: Move data to directory
         run: |
-          mv parking-data-${{ steps.date.outputs.time }}.csv ${{ github.workspace }}/${{ steps.dir.outputs.dir }}
+          cp latest.csv ${{ github.workspace }}/${{ steps.dir.outputs.dir }}/parking-data-${{ steps.date.outputs.time }}.csv
       - name: Update file location
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
