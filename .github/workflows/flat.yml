@@ -19,6 +19,8 @@ jobs:
           echo "::set-output name=month::$(date +'%m')"
           echo "::set-output name=day::$(date +'%d')"
           echo "::set-output name=time::$(date +'%H_%M')"
+        env:
+          TZ: /usr/share/zoneinfo/Europe/Madrid
       - name: Set up dir variables
         id: dir
         run: |          
