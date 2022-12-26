@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es"
+      class="h-100">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="author"
+          content="Centro Municipal de Informática del Ayuntamiento de Málaga">
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/assets/img/favicon-32x32.png">
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/assets/img/favicon-16x16.png">
+    <link rel="stylesheet"
+          href="/assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="/assets/css/style.css">
+    <title>Aviso - CEMI</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <!-- MENSAJE 500 - El servidor está temporalmente fuera de servicio -->
+    <div class="jumbotron bg-warning ">
+        <h1 class="display-4 mb-4">El servidor está temporalmente fuera de servicio</h1>
+        <p class="lead">En estos momentos el servidor no puede atender su petición debido a tareas de mantenimiento o
+            por problemas de capacidad. Por favor inténtelo más tarde.</p>
+    </div>
+
+
+    <!-- Decoración del banner con bg-warning -->
+    <div class="d-flex w-100 decorate">
+        <div class="bg-warning-9 flex-grow-1"></div>
+        <div class="bg-warning-8 flex-grow-1"></div>
+        <div class="bg-warning-7 flex-grow-1"></div>
+        <div class="bg-warning-6 flex-grow-1"></div>
+        <div class="bg-warning-5 flex-grow-1"></div>
+        <div class="bg-warning-4 flex-grow-1"></div>
+        <div class="bg-warning-3 flex-grow-1"></div>
+        <div class="bg-warning-2 flex-grow-1"></div>
+        <div class="bg-warning-1 flex-grow-1"></div>
+    </div>
+
+
+    <!-- Logotipos enlazables del Ayuntamiento y CEMI -->
+    <div class="d-flex flex-row justify-content-center align-items-center mt-auto">
+        <a href="http://malaga.eu"
+           target="_blank">
+            <img src="/assets/img/ayto-vertical-2lineas-positivo.png"
+                 alt="Logotipo Ayuntamiento de Málaga"
+                 class="logo-ayto">
+        </a>
+        <a href="http://cemi.malaga.eu"
+           target="_blank">
+            <img src="/assets/img/logo-cemi-positivo.png"
+                 alt="Logotipo Centro Municipal de Informática"
+                 class="logo-cemi">
+        </a>
+    </div>
+
+    <!-- Pie de página para información adicional del proxy: hora y proxy -->
+    <footer class="footer mt-auto py-3">
+        <div class="container d-flex flex-row justify-content-between">
+            <span class="text-muted font-weight-light text-nowrap">26-12-2022 - 20:30:36 &nbsp;</span>
+            <span class="text-muted font-weight-light text-truncate">Proxy Inverso de Internet</span>
+
+        </div>
+    </footer>
+</body>
+<script src="/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+
+</html>
