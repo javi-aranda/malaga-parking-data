@@ -32,12 +32,12 @@ jobs:
         run: |
           touch ${{ github.workspace }}/${{ steps.dir.outputs.dir }}/.gitkeep
       - name: Commit structure to git repo
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: EndBug/add-and-commit@v9
         with:
-          commit_message: Estructura generada automáticamente
-          commit_options: '--no-verify --signoff'
-          repository: .
-          commit_user_name: javisenberg
+          message: Estructura generada automáticamente
+          pull: '--rebase'
+          committer_name: javisenberg
+          commit: --signoff
       - name: Fetch data
         uses: githubocto/flat@v3
         with:
@@ -49,9 +49,9 @@ jobs:
         run: |
           cp latest.csv ${{ github.workspace }}/${{ steps.dir.outputs.dir }}/parking-data-${{ steps.date.outputs.time }}.csv
       - name: Update file location
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: EndBug/add-and-commit@v9
         with:
-          commit_message: Estructura generada automáticamente
-          commit_options: '--no-verify --signoff'
-          repository: .
-          commit_user_name: javisenberg
+          message: Estructura generada automáticamente
+          pull: '--rebase'
+          committer_name: javisenberg
+          commit: --signoff
