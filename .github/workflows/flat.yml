@@ -35,7 +35,6 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: Estructura generada automáticamente
-          pull: '--rebase'
           committer_name: javisenberg
           commit: --signoff
       - name: Fetch data
@@ -52,6 +51,5 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: Estructura generada automáticamente
-          pull: '--rebase'
           committer_name: javisenberg
           commit: --signoff
