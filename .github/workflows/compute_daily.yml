@@ -33,3 +33,11 @@ jobs:
 
       - name: execute compute_daily script
         run: python ${GITHUB_WORKSPACE}/scripts/compute_daily.py --year=${{ steps.date.outputs.year }} --month=${{ steps.date.outputs.month }} --day=${{ steps.date.outputs.day }}
+
+      - name: Commit structure to git repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Cálculo automático
+          author_name: javi-aranda
+          committer_name: javi-aranda
+          commit: --signoff
