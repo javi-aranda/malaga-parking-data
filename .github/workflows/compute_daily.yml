@@ -1,6 +1,7 @@
 name: Run compute_daily script
 
 on:
+  workflow_dispatch: {}
   schedule:
     - cron: '59 23 * * *'
 
