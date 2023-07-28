@@ -1,0 +1,35 @@
+name: Run compute_daily script
+
+on:
+  schedule:
+    - cron: '23 59 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Set up datetime variables
+        id: date
+        run: |
+          echo "::set-output name=year::$(date +'%Y')"
+          echo "::set-output name=month::$(date +'%m')"
+          echo "::set-output name=day::$(date +'%d')"
+        env:
+          TZ: /usr/share/zoneinfo/Europe/Madrid
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed 
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: execute compute_daily script
+        run: python ${GITHUB_WORKSPACE}/scripts/compute_daily.py --year=${{ steps.date.outputs.year }} --month=${{ steps.date.outputs.month }} --day=${{ steps.date.outputs.day }}
