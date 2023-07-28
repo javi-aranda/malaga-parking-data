@@ -23,7 +23,7 @@ jobs:
           TZ: /usr/share/zoneinfo/Europe/Madrid
       - name: Set up dir variables
         id: dir
-        run: |          
+        run: |
           echo "::set-output name=dir::${{ steps.date.outputs.year }}/${{ steps.date.outputs.month }}/${{ steps.date.outputs.day }}"
       - name: Create directory structure
         run: |
