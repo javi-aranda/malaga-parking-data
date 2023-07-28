@@ -1,0 +1,15 @@
+poiID,nombre,capacidad,media_libres,media_libres_discapacitados,max_libres,max_libres_discapacitados,min_libres,min_libres_discapacitados
+1,Salitre,342,169,-1,270,-1,80,-1
+2,Cervantes,414,168,-1,280,-1,7,-1
+3,El Palo,129,46,-1,71,-1,16,-1
+4,Av. de Andalucía,517,361,-1,510,-1,139,-1
+5,Camas,-1,152,-1,300,-1,4,-1
+6,Cruz De Humilladero,100,78,-1,97,-1,54,-1
+8,Alcazaba,-1,173,-1,292,-1,65,-1
+9,San Juan De La Cruz,350,277,-1,344,-1,179,-1
+10,Pz. de la Marina,256,128,-1,268,-1,0,-1
+12,Tejón y Rodriguez,-1,59,-1,104,-1,3,-1
+138,El Carmen,-1,-1,-1,-1,-1,-1,-1
+139,Mármoles,-1,-1,-1,-1,-1,-1,-1
+140,El Limonar,161,-1,-1,-1,-1,-1,-1
+142,Bailén,-1,-1,-1,-1,-1,-1,-1
