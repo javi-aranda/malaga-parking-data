@@ -1,4 +1,4 @@
-name: retrieve latest data and update repository
+name: Retrieve latest data and update repository
 on:
   schedule:
     - cron: "*/10 * * * *"
