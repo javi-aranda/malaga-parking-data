@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import click
@@ -30,38 +31,91 @@ def compute_daily(year, month, day):
         except pd.errors.ParserError:
             print(f"Error leyendo {os.path.join(data_path, file)}, ignorando")
             continue
+
+        # Añadir columna con la hora
+        hour, minute = file.split(".")[0].split("-")[-1].split("_")
+        df["time"] = datetime.time(hour=int(hour), minute=int(minute))
+
         dataframes.append(df)
 
     df = pd.concat(dataframes)
 
     # Convertir a tipo int varias columnas
-    df["capacidad"] = df["capacidad"].fillna(-1).astype(int)
-    df["capacidad_discapacitados"] = (
-        df["capacidad_discapacitados"].fillna(-1).astype(int)
-    )
-    df["libres"] = df["libres"].fillna(-1).astype(int)
-    df["libres_discapacitados"] = df["libres_discapacitados"].fillna(-1).astype(int)
+    df["capacidad"].replace("None", -1, inplace=True)
+    df["capacidad_discapacitados"].replace("None", -1, inplace=True)
+    df["libres"].replace("None", -1, inplace=True)
+    df["libres_discapacitados"].replace("None", -1, inplace=True)
 
-    # Crear un DataFrame con valores de las columnas agregados
+    df_cols_to_numeric = [
+        "capacidad",
+        "capacidad_discapacitados",
+        "libres",
+        "libres_discapacitados",
+    ]
+
+    df[df_cols_to_numeric] = df[df_cols_to_numeric].astype(int)
+
+    df_grouped = df.groupby("poiID")
+
+    # Preparar un DataFrame con valores de las columnas agregados
+    poiID = df_grouped["poiID"].min()
+    nombre = df_grouped["nombre"].min()
+    capacidad = df_grouped["capacidad"].min()
+    media_libres = df_grouped["libres"].mean().astype(int)
+    media_libres_discapacitados = df_grouped["libres_discapacitados"].mean().astype(int)
+    max_libres = df_grouped["libres"].max().astype(int)
+    max_libres_discapacitados = df_grouped["libres_discapacitados"].max().astype(int)
+    min_libres = df_grouped["libres"].min().astype(int)
+    min_libres_discapacitados = df_grouped["libres_discapacitados"].min().astype(int)
+
+    # Obtener índices de máximos y mínimos de aparcamientos libres y libres_discapacitados
+    max_libres_idx = df_grouped["libres"].idxmax()
+    min_libres_idx = df_grouped["libres"].idxmin()
+    max_libres_discapacitados_idx = df_grouped["libres_discapacitados"].idxmax()
+    min_libres_discapacitados_idx = df_grouped["libres_discapacitados"].idxmin()
+
+    # Usar los índices para obtener las horas de los máximos y mínimos
+    default_time = "00:00:00"
+    max_time_libres = df.loc[max_libres_idx, "time"].fillna(default_time).values
+    min_time_libres = df.loc[min_libres_idx, "time"].fillna(default_time).values
+    max_time_libres_discapacitados = (
+        df.loc[max_libres_discapacitados_idx, "time"].fillna(default_time).values
+    )
+    min_time_libres_discapacitados = (
+        df.loc[min_libres_discapacitados_idx, "time"].fillna(default_time).values
+    )
+
+    # Crear DataFrame con los datos agregados
     stats_df = pd.DataFrame(
         {
-            "poiID": df.groupby("poiID")["poiID"].min(),
-            "nombre": df.groupby("poiID")["nombre"].min(),
-            "capacidad": df.groupby("poiID")["capacidad"].min(),
-            "media_libres": df.groupby("poiID")["libres"].mean().astype(int),
-            "media_libres_discapacitados": df.groupby("poiID")["libres_discapacitados"]
-            .mean()
-            .astype(int),
-            "max_libres": df.groupby("poiID")["libres"].max().astype(int),
-            "max_libres_discapacitados": df.groupby("poiID")["libres_discapacitados"]
-            .max()
-            .astype(int),
-            "min_libres": df.groupby("poiID")["libres"].min().astype(int),
-            "min_libres_discapacitados": df.groupby("poiID")["libres_discapacitados"]
-            .min()
-            .astype(int),
+            "poiID": poiID,
+            "nombre": nombre,
+            "capacidad": capacidad,
+            "media_libres": media_libres,
+            "media_libres_discapacitados": media_libres_discapacitados,
+            "max_libres": max_libres,
+            "max_libres_discapacitados": max_libres_discapacitados,
+            "max_time_libres": max_time_libres,
+            "max_time_libres_discapacitados": max_time_libres_discapacitados,
+            "min_libres": min_libres,
+            "min_libres_discapacitados": min_libres_discapacitados,
+            "min_time_libres": min_time_libres,
+            "min_time_libres_discapacitados": min_time_libres_discapacitados,
         }
     )
+
+    # Convert float columns to integers
+    stats_df_cols_to_numeric = [
+        "poiID",
+        "capacidad",
+        "media_libres",
+        "media_libres_discapacitados",
+        "max_libres",
+        "max_libres_discapacitados",
+        "min_libres",
+        "min_libres_discapacitados",
+    ]
+    stats_df[stats_df_cols_to_numeric] = stats_df[stats_df_cols_to_numeric].astype(int)
 
     # Guardar el DataFrame en un fichero CSV
     stats_df.to_csv(os.path.join(data_path, "stats.csv"), index=False)
