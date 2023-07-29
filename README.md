@@ -1,4 +1,8 @@
 # Málaga Parking Data
+[![Últimos datos recogidos satisfactoriamente](https://github.com/javi-aranda/malaga-parking-data/actions/workflows/update_data.yml/badge.svg)](https://github.com/javi-aranda/malaga-parking-data/actions/workflows/update_data.yml)
+[![Estadísticas diarias calculadas](https://github.com/javi-aranda/malaga-parking-data/actions/workflows/compute_daily.yml/badge.svg)](https://github.com/javi-aranda/malaga-parking-data/actions/workflows/compute_daily.yml)
+
+
 El propósito de este proyecto es tener un scraper automatizado mediante GitHub Actions que recoja
 la información de aparcamientos públicos disponibles en tiempo semi-real, utilizando para ello
 el portal de Datos Abiertos de Málaga.
