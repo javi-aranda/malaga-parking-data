@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sh scripts/cleanup.sh
+      - run: sh scripts/cleanup_data.sh
       - name: Commit structure to git repo
         uses: EndBug/add-and-commit@v9
         with:
