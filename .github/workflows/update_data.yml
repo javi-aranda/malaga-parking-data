@@ -15,22 +15,22 @@ jobs:
       - name: Set up datetime variables
         id: date
         run: |
-          echo "::set-output name=year::$(date +'%Y')"
-          echo "::set-output name=month::$(date +'%m')"
-          echo "::set-output name=day::$(date +'%d')"
-          echo "::set-output name=time::$(date +'%H_%M')"
+          echo "year=$(date +'%Y')" >> "$GITHUB_ENV"
+          echo "month=$(date +'%m')" >> "$GITHUB_ENV"
+          echo "day=$(date +'%d')" >> "$GITHUB_ENV"
+          echo "time=$(date +'%H_%M')" >> "$GITHUB_ENV"
         env:
           TZ: /usr/share/zoneinfo/Europe/Madrid
       - name: Set up dir variables
         id: dir
         run: |
-          echo "::set-output name=dir::${{ steps.date.outputs.year }}/${{ steps.date.outputs.month }}/${{ steps.date.outputs.day }}"
+          echo "dir=$year/$month/$day" >> "$GITHUB_ENV"
       - name: Create directory structure
         run: |
-          mkdir -p ${{ github.workspace }}/${{ steps.dir.outputs.dir }}
+          mkdir -p ${{ github.workspace }}/$dir
       - name: Write .gitkeep file
         run: |
-          touch ${{ github.workspace }}/${{ steps.dir.outputs.dir }}/.gitkeep
+          touch ${{ github.workspace }}/$dir/.gitkeep
       - name: Commit structure to git repo
         uses: EndBug/add-and-commit@v9
         with:
@@ -47,7 +47,7 @@ jobs:
         continue-on-error: true
       - name: Move data to directory
         run: |
-          cp latest.csv ${{ github.workspace }}/${{ steps.dir.outputs.dir }}/parking-data-${{ steps.date.outputs.time }}.csv
+          cp latest.csv ${{ github.workspace }}/$dir/parking-data-$time.csv
       - name: Update file location
         uses: EndBug/add-and-commit@v9
         with:
