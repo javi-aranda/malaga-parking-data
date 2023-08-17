@@ -15,7 +15,7 @@ def compute_daily(year, month, day):
     csv_files = [
         name
         for name in os.listdir(data_path)
-        if name.endswith(".csv") and name.startswith("parking-data")
+        if name.startswith("parking-data")
     ]
     # Excluir ficheros vacíos
     csv_files = [
