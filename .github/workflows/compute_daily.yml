@@ -13,9 +13,9 @@ jobs:
       - name: Set up datetime variables
         id: date
         run: |
-          echo "::set-output name=year::$(date +'%Y')"
-          echo "::set-output name=month::$(date +'%m')"
-          echo "::set-output name=day::$(date +'%d')"
+          echo "::set-output name=year::$(date -d yesterday +'%Y')"
+          echo "::set-output name=month::$(date -d yesterday +'%m')"
+          echo "::set-output name=day::$(date -d yesterday +'%d')"
         env:
           TZ: /usr/share/zoneinfo/Europe/Madrid
 
