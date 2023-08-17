@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
+
+      - name: Pull latest changes
+        run: git pull origin master
+
       - name: Set up datetime variables
         id: date
         run: |
@@ -21,16 +25,20 @@ jobs:
           echo "time=$(date +'%H_%M')" >> "$GITHUB_ENV"
         env:
           TZ: /usr/share/zoneinfo/Europe/Madrid
+
       - name: Set up dir variables
         id: dir
         run: |
           echo "dir=$year/$month/$day" >> "$GITHUB_ENV"
+
       - name: Create directory structure
         run: |
           mkdir -p ${{ github.workspace }}/$dir
+
       - name: Write .gitkeep file
         run: |
           touch ${{ github.workspace }}/$dir/.gitkeep
+
       - name: Commit structure to git repo
         uses: EndBug/add-and-commit@v9
         with:
@@ -38,6 +46,7 @@ jobs:
           author_name: javi-aranda
           committer_name: javi-aranda
           commit: --signoff
+
       - name: Fetch data
         uses: githubocto/flat@v3
         with:
@@ -45,9 +54,11 @@ jobs:
           downloaded_filename: |
             latest.csv
         continue-on-error: true
+
       - name: Move data to directory
         run: |
           cp latest.csv ${{ github.workspace }}/$dir/parking-data-$time.csv
+          
       - name: Update file location
         uses: EndBug/add-and-commit@v9
         with:
