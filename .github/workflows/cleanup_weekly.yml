@@ -1,0 +1,19 @@
+name: Run weekly cleanup
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sh scripts/cleanup.sh
+      - name: Commit structure to git repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Limpieza automática
+          author_name: javi-aranda
+          committer_name: javi-aranda
+          commit: --signoff
