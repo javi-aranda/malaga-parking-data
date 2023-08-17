@@ -17,4 +17,10 @@ festivos locales o eventos de interés general.
 
 ## Scripts
 El proyecto cuenta con una serie de scripts que utilizan la biblioteca `pandas` para procesar los datos
-recogidos y calcular ciertas estadísticas.
+recogidos y calcular ciertas estadísticas. También cuenta con utilidades para limpiar los datos que no
+son válidos de forma periódica, ayudando a mantener una consistencia en los datos.
+
+## API
+Para facilitar la consulta de los datos existe el proyecto [malaga-parking-data-api](https://github.com/javi-aranda/malaga-parking-data-api),
+que se encuentra en una fase temprana de desarrollo, pero cuenta con el potencial para facilitar la
+obtención de los datos localizados en este repositorio.
