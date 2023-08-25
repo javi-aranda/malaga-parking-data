@@ -8,8 +8,13 @@ jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+
       - uses: actions/checkout@v2
-      - run: sh scripts/cleanup_data.sh
+      - run: python ${GITHUB_WORKSPACE}/scripts/cleanup_data.sh
       - name: Commit structure to git repo
         uses: EndBug/add-and-commit@v9
         with:
