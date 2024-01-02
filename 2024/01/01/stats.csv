@@ -1,0 +1,11 @@
+poiID,nombre,capacidad,media_libres,media_libres_discapacitados,max_libres,max_libres_discapacitados,max_time_libres,min_libres,min_libres_discapacitados,min_time_libres
+1,Salitre,342,241,-1,241,-1,22:55:00,241,-1,22:55:00
+2,Cervantes,-1,219,-1,219,-1,22:55:00,219,-1,22:55:00
+3,El Palo,-1,62,-1,62,-1,22:55:00,62,-1,22:55:00
+4,Av. de Andalucía,-1,317,-1,317,-1,22:55:00,317,-1,22:55:00
+5,Camas,-1,18,-1,18,-1,22:55:00,18,-1,22:55:00
+6,Cruz De Humilladero,100,81,-1,81,-1,22:55:00,81,-1,22:55:00
+8,Alcazaba,-1,178,-1,178,-1,22:55:00,178,-1,22:55:00
+9,San Juan De La Cruz,410,313,-1,313,-1,22:55:00,313,-1,22:55:00
+10,Pz. de la Marina,324,115,-1,115,-1,22:55:00,115,-1,22:55:00
+12,Tejón y Rodriguez,-1,59,-1,59,-1,22:55:00,59,-1,22:55:00
