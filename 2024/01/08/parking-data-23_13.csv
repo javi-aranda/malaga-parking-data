@@ -1,10 +1,4 @@
-13:26:43 GMTETag: "b8-60e6f261dfdf1"
-Accept-Ranges: bytes
-Content-Length: 184
-Connection: close
-Content-Type: text/csv
-
-dato,poiID,libres
+dato,id,libres
 OCUPACION,AL,163
 OCUPACION,MA,29
 OCUPACION,CA,76
@@ -15,5 +9,3 @@ OCUPACION,CE,175
 OCUPACION,CY,213
 OCUPACION,SJ,290
 OCUPACION,PB,196
-Informe En..&gt;</a></td><td align="right">2017-11-06 12:18  </td><td align="right"> 57K</td><td>&nbsp;</td></tr>
-<tr
