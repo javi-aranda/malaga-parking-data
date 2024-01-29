@@ -5,7 +5,7 @@ on:
   workflow_dispatch: {}
   push:
     paths:
-      - .github/workflows/flat.yml
+      - .github/workflows/update_data.yml
 jobs:
   scheduled:
     runs-on: ubuntu-latest
