@@ -57,8 +57,8 @@ jobs:
 
       - name: Cleanup CSV
         run: |
-          { awk '/dato,id,libres/{p=1}p' latest.csv; awk '/^OCUPACION/' latest.csv; } > latest.csv.temp && mv latest.csv.temp latest.csv
-
+          awk '/dato,id,libres/ || /^OCUPACION/' latest.csv > latest.csv.temp && mv latest.csv.temp latest.csv
+          
       - name: Move data to directory
         run: |
           cp latest.csv ${{ github.workspace }}/$dir/parking-data-$time.csv
