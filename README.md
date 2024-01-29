@@ -10,15 +10,18 @@ el portal de Datos Abiertos de Málaga.
 ## Últimos datos recopilados
 Los datos recopilados más actualizados se encuentran en el fichero [latest.csv](https://github.com/javi-aranda/malaga-parking-data/blob/master/latest.csv).
 
+La referencia de los códigos utilizados para identificar los distintos aparcamientos está recogida
+en [catalogo.csv](https://github.com/javi-aranda/malaga-parking-data/blob/master/catalogo.csv).
+
 ## Potenciales aplicaciones
 Con una serie importante de datos se pueden realizar análisis estadísticos sobre el uso de los
 aparcamientos públicos a lo largo del tiempo, cruzando datos como puedan ser factores meteorológicos,
 festivos locales o eventos de interés general.
 
 ## Scripts
-El proyecto cuenta con una serie de scripts que utilizan la biblioteca `pandas` para procesar los datos
-recogidos y calcular ciertas estadísticas. También cuenta con utilidades para limpiar los datos que no
-son válidos de forma periódica, ayudando a mantener una consistencia en los datos.
+El proyecto cuenta con una serie de scripts en Python que utilizan la biblioteca `pandas` para procesar 
+los datos recogidos y calcular ciertas estadísticas. También cuenta con utilidades para limpiar los 
+datos que no son válidos de forma periódica, ayudando a mantener una consistencia a lo largo del repositorio.
 
 ## API
 Para facilitar la consulta de los datos existe el proyecto [malaga-parking-data-api](https://github.com/javi-aranda/malaga-parking-data-api),
