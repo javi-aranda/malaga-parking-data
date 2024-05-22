@@ -8,10 +8,10 @@ la información de aparcamientos públicos disponibles en tiempo semi-real, util
 el portal de Datos Abiertos de Málaga.
 
 ## Últimos datos recopilados
-Los datos recopilados más actualizados se encuentran en el fichero [latest.csv](https://github.com/javi-aranda/malaga-parking-data/blob/master/latest.csv).
+Los datos recopilados más actualizados se encuentran en el fichero [latest.csv](https://github.com/javi-aranda/malaga-parking-data/blob/main/latest.csv).
 
 La referencia de los códigos utilizados para identificar los distintos aparcamientos está recogida
-en [catalogo.csv](https://github.com/javi-aranda/malaga-parking-data/blob/master/catalogo.csv).
+en [catalogo.csv](https://github.com/javi-aranda/malaga-parking-data/blob/main/catalogo.csv).
 
 ## Potenciales aplicaciones
 Con una serie importante de datos se pueden realizar análisis estadísticos sobre el uso de los
