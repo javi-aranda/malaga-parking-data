@@ -40,36 +40,20 @@ def compute_daily(year, month, day):
 
     df = pd.concat(dataframes).reset_index(drop=True)
 
-    # Convertir a tipo int varias columnas
-    df["capacidad"] = df["capacidad"].fillna(-1).astype(int)
-    df["capacidad_discapacitados"] = (
-        df["capacidad_discapacitados"].fillna(-1).astype(int)
-    )
+    # Convertir a tipo int la columna "libres"
     df["libres"] = df["libres"].fillna(-1).astype(int)
-    df["libres_discapacitados"] = df["libres_discapacitados"].fillna(-1).astype(int)
 
-    # Agrupar por parking y calcular estadísticas
-    grouped_df = df.groupby("poiID")
+    # Agrupar por ID y calcular estadísticas
+    grouped_df = df.groupby("id")
     stats_df = pd.DataFrame(
         {
-            "poiID": grouped_df["poiID"].min(),
-            "nombre": grouped_df["nombre"].min(),
-            "capacidad": grouped_df["capacidad"].min(),
+            "id": grouped_df["id"].min(),
             "media_libres": grouped_df["libres"].mean().astype(int),
-            "media_libres_discapacitados": grouped_df["libres_discapacitados"]
-            .mean()
-            .astype(int),
-            "max_libres": grouped_df["libres"].max().astype(int),
-            "max_libres_discapacitados": grouped_df["libres_discapacitados"]
-            .max()
-            .astype(int),
+            "max_libres": grouped_df["libres"].max(),
+            "min_libres": grouped_df["libres"].min(),
             "max_time_libres": grouped_df.apply(
                 lambda x: x.loc[x["libres"].idxmax(), "time"]
             ),
-            "min_libres": grouped_df["libres"].min().astype(int),
-            "min_libres_discapacitados": grouped_df["libres_discapacitados"]
-            .min()
-            .astype(int),
             "min_time_libres": grouped_df.apply(
                 lambda x: x.loc[x["libres"].idxmin(), "time"]
             ),
