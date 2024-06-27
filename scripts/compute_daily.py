@@ -11,7 +11,7 @@ import pandas as pd
 @click.option("--day", help="Día solicitado.")
 def compute_daily(year, month, day):
     # Cargamos los datos de un día en un DataFrame
-    data_path = os.path.join(os.getcwd(), year, month, day)
+    data_path = os.path.join(os.getcwd(), "data", year, month, day)
     csv_files = [
         name
         for name in os.listdir(data_path)

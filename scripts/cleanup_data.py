@@ -15,7 +15,7 @@ def should_delete(file_path):
 def process_directory(directory):
     global deleted_count
     for item in os.listdir(directory):
-        item_path = os.path.join(directory, item)
+        item_path = os.path.join(directory, "data", item)
         if os.path.isfile(item_path):
             if should_delete(item_path):
                 os.remove(item_path)

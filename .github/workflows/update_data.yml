@@ -33,11 +33,11 @@ jobs:
 
       - name: Create directory structure
         run: |
-          mkdir -p ${{ github.workspace }}/$dir
+          mkdir -p ${{ github.workspace }}/data/$dir
 
       - name: Write .gitkeep file
         run: |
-          touch ${{ github.workspace }}/$dir/.gitkeep
+          touch ${{ github.workspace }}/data/$dir/.gitkeep
 
       - name: Commit structure to git repo
         uses: EndBug/add-and-commit@v9
@@ -61,7 +61,7 @@ jobs:
           
       - name: Move data to directory
         run: |
-          cp latest.csv ${{ github.workspace }}/$dir/parking-data-$time.csv
+          cp latest.csv ${{ github.workspace }}/data/$dir/parking-data-$time.csv
           
       - name: Update file location
         uses: EndBug/add-and-commit@v9
