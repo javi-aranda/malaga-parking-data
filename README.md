@@ -23,7 +23,8 @@ El proyecto cuenta con una serie de scripts en Python que utilizan la biblioteca
 los datos recogidos y calcular ciertas estadísticas. También cuenta con utilidades para limpiar los 
 datos que no son válidos de forma periódica, ayudando a mantener una consistencia a lo largo del repositorio.
 
-## API
-Para facilitar la consulta de los datos existe el proyecto [malaga-parking-data-api](https://github.com/javi-aranda/malaga-parking-data-api),
-que se encuentra en una fase temprana de desarrollo, pero cuenta con el potencial para facilitar la
-obtención de los datos localizados en este repositorio.
+## Dashboard
+Para facilitar la consulta de los datos existe el proyecto [Málaga Parking Dashboard](https://malaga-parking.streamlit.app),
+que permite explorar los últimos resultados obtenidos directamente en el mapa para conocer el estado
+de los aparcamientos, y además incluye un buscador temporal para poder desgranar la información
+en periodos de tiempo concretos. El código de este proyecto se encuentra en [malaga-parking-dashboard](https://github.com/javi-aranda/malaga-parking-dashboard).
